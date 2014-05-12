@@ -58,6 +58,7 @@ http.createServer(function(req, res) {
     });
   } else if (req.method == 'PUT') {
     if (!short) return res.endHead(400);
+    if (short.length > 1024) return res.endHead(413);
     redis.get('short:'+short, function(err, long) {
       if (err) return res.error(err);
       if (long) return res.endHead(409);

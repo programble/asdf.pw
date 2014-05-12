@@ -1,0 +1,30 @@
+POST / HTTP/1.1
+Host: asdf.pw
+
+http://asdf.pw
+
+HTTP/1.1 200 OK
+Content-Type: text/plain
+
+http://asdf.pw/xJOLA10fR
+
+
+GET /xJOLA10fR HTTP/1.1
+Host: asdf.pw
+
+HTTP/1.1 302 Moved Temporarily
+Content-Type: text/plain
+Location: http://asdf.pw/
+
+http://asdf.pw/
+
+
+PUT /self HTTP/1.1
+Host: asdf.pw
+
+http://asdf.pw
+
+HTTP/1.1 200 OK
+Content-Type: text/plain
+
+http://asdf.pw/self

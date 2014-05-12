@@ -1,8 +1,10 @@
+var fs      = require('fs');
 var http    = require('http');
 var url     = require('url');
 var shortId = require('shortid');
 var Redis   = require('redis');
 var redis   = Redis.createClient();
+var readme  = fs.readFileSync(__dirname + '/README', 'utf8');
 http.createServer(function(req, res) {
   res.endHead = function(status) {
     res.writeHead(status);
@@ -30,7 +32,11 @@ http.createServer(function(req, res) {
   res.setHeader('Content-Type', 'text/plain');
   var short = req.url.slice(1);
   if (req.method == 'GET') {
-    if (!short) return res.endHead(200);
+    if (!short) {
+      res.writeHead(200);
+      res.write(readme);
+      return res.end();
+    }
     redis.get('short:'+short, function(err, long) {
       if (err) return res.error(err);
       if (!long) return res.endHead(404);

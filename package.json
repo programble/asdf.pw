@@ -1,0 +1,14 @@
+{
+  "name": "asdf.pw",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
+  "dependencies": {
+    "shortid": "^2.0.0",
+    "redis": "^0.10.1"
+  },
+  "engines": {
+    "node": "^0.10.26",
+    "npm": "^1.4.3"
+  }
+}
